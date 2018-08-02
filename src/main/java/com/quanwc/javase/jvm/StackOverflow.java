@@ -12,11 +12,11 @@ package com.quanwc.javase.jvm;
 public class StackOverflow {
 
     public static void stackMethod() {
+        System.out.println("111111");
         stackMethod();
     }
 
     public static void main(String[] args) {
-        StackOverflow obj = new StackOverflow();
-        obj.stackMethod();
+        stackMethod();
     }
 }
