@@ -22,6 +22,10 @@ public class SportEnumService {
             System.out.print(e.name() + " "); // 与上面的toString()方法类似，返回枚举常量的名称，源码中都是返回Enmu类的name属性值
         }
 
+        System.out.print("\ne.numId: ");
+        for (SportEnum e : SportEnum.values()) {
+            System.out.print(e.getNumId() + " ");
+        }
 
         System.out.println("\n" + SportEnum.Basketball.getDeclaringClass().getName()); // 该枚举常量的对应的Class对象
 
@@ -71,7 +75,7 @@ public class SportEnumService {
 
     public static void main(String[] args) {
 
-        //basicMethod();
+        basicMethod();
 
         //enumCompareTo();
 

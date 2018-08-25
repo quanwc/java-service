@@ -1,0 +1,67 @@
+
+参考：
+http://114.215.174.8/backend/web-service/issues/355
+https://baike.baidu.com/item/JSON/2462549?fr=aladdin#2
+
+
+方式一：
+"result": {
+	"coin": 10,
+	"experience": 20,
+	"cash": 30
+}
+
+
+
+方式三：
+"result": [
+		{
+			"accountKey": "coin",
+			"accountName": "金币",
+			"quantity": 10
+		},
+		{
+			"accountKey": "experience",
+			"accountName": "经验",
+			"quantity": 20
+		},
+		{
+			"accountKey": "cash",
+			"accountName": "现金",
+			"quantity": 30
+		}
+	]
+	
+	
+对比:
+1: 语法角度：
+	编译器不会报错，都可以运行出结果
+2: 最终的效果：三比较一，更直观，简洁  怎么存，怎么取
+  不用在外面套一层List，直接就是"账户:余额"，@link demo代码
+  方式三：给账户加了一个key，给余额也加了一个key
+		  账户类型我们定好后是不会再变的
+		  方式三的的3个key是可以用被替代的：直接用三key的value值分别作为最终的key、value
+
+
+3: 如果账户再添加一个属性：eg：description(账户描述)、overdraftLimit(透支额度)
+这样的话，在方式一的基础上升级后，就是下面的效果
+	"result": 
+	{
+		"coin": {
+			"quantity": 10,
+			"overdraftLimit" : -100
+		},
+		"experience": {
+			"quantity": 20,
+			"overdraftLimit" : -200
+		},
+		"cash": {
+			"quantity": 30,
+			"overdraftLimit" : -300
+		}
+	}
+
+
+总结:
+	如果只有两个属性：方式一
+	需要追加属性: 方式四

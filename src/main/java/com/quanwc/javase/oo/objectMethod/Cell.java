@@ -48,9 +48,8 @@ public class Cell {
         if (obj instanceof Cell) {
             Cell cell = (Cell) obj;
             return this.row == cell.row && this.col == cell.col;
-        } else {
-            return false;
         }
+        return false;
     }
 
     @Override
