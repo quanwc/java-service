@@ -19,7 +19,7 @@ public class SportEnumService {
 
         System.out.print("\ne.name(): ");
         for (SportEnum e : SportEnum.values()) {
-            System.out.print(e.name() + " "); // 与上面的toString()方法类似，返回枚举常量的名称，源码中都是返回Enmu类的name属性值
+            System.out.print(e.name() + " "); // 与上面的toString()方法类似，返回枚举常量的名称。因为：toString()源码中都是返回Enmu类的name属性值
         }
 
         System.out.print("\ne.numId: ");
@@ -34,6 +34,8 @@ public class SportEnumService {
 
         SportEnum like = SportEnum.valueOf("Basketball"); // 返回带指定名称的指定枚举类型的枚举常量，找不到会抛异常：IllegalArgumentException
         System.out.println("basketball-numId: " + like.getNumId());
+
+        System.out.println("0000000000000: " + SportEnum.Basketball.name());
     }
 
 
