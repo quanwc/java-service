@@ -11,6 +11,11 @@ public class DemoApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		int i = 0;
+		boolean flag = false;
+		flag = ((++i) + (i++) == 2) ? true : false;
+		System.out.println("i=" + i);
+		System.out.println("flag=" + flag);
 	}
 
 }

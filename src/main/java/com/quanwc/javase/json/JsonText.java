@@ -15,7 +15,7 @@ public class JsonText {
         List<Account> list = new ArrayList<Account>(){{
             add(new Account("coin", "金币", 10));
             add(new Account("experience", "经验", 20));
-            add(new Account("cash", "金现金", 30));
+            add(new Account("cash", "现金", 30));
         }};
         System.out.println(list);
 

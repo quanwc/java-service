@@ -29,7 +29,8 @@ public class PhoneUtil {
 		try {
 			PhoneDTO phoneDTO = JsonUtil.JsonStr2Obj(str, PhoneDTO.class);
 			return phoneDTO;
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			log.error("str convert json error: " + e);
 		}
 		return null;
@@ -55,7 +56,7 @@ public class PhoneUtil {
 	}
 
 	/**
-	 * List<PhoneDO> 转为 List<PhoneDTO>
+	 * List<PhoneDTO> 转为 List<PhoneDO>
 	 * @param paramList
 	 * @return
 	 */
@@ -64,7 +65,10 @@ public class PhoneUtil {
 			return null;
 		}
 		List<PhoneDO> phoneDOList = paramList.stream().map(PhoneUtil::phoneDTO2PhoneDO)
-				.filter(obj -> !Objects.isNull(obj)).collect(Collectors.toList());
+				.filter(obj -> !Objects.isNull(obj))
+				.sorted(Comparator
+						.comparing(phoneDTO -> (-1) * phoneDTO.getCreateTimestamp()))
+				.collect(Collectors.toList());
 		return phoneDOList;
 	}
 
@@ -139,8 +143,8 @@ public class PhoneUtil {
 		Map<Integer, Boolean> isTopMap = new HashMap<>();
 
 		if (!CollectionUtils.isEmpty(phoneDOList)) {
-			List<Integer> userSubjectIds = phoneDOList.stream()
-					.map(PhoneDO::getUserId).collect(Collectors.toList());
+			List<Integer> userSubjectIds = phoneDOList.stream().map(PhoneDO::getUserId)
+					.collect(Collectors.toList());
 
 			phoneDOList.forEach(obj -> isTopMap.put(obj.getUserId(),
 					obj.getIsTop().equals(PhoneConstant.PHONE_IS_TOP)));

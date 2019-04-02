@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.quanwc.javase.image.mapper.OssArticleMapper">
+    <resultMap id="ossNewsResultMap" type="com.quanwc.javase.image.bean.OssArticleDO">
+        <result column="id" property="id"/>
+        <result column="article_id" property="articleId"/>
+        <result column="fake_image_url" property="fakeImageUrl"/>
+        <result column="status_code" property="statusCode"/>
+    </resultMap>
+
+
+    <sql id="Base_Column">
+		`id`, `article_id`, `fake_image_url`
+	</sql>
+
+    <insert id="saveBatch" parameterType="java.util.List">
+        INSERT INTO r_oss_article(
+        article_id, fake_image_url, status_code
+        )VALUES
+        <foreach collection="ossArticleList" item="item" index="index" separator=",">
+            (
+            #{item.articleId, jdbcType=INTEGER},
+            #{item.fakeImageUrl, jdbcType=VARCHAR},
+            #{item.statusCode, jdbcType=INTEGER}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
