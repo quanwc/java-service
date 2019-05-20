@@ -1,4 +1,4 @@
-package com.quanwc.javase.bigDecimal.service;
+package com.quanwc.javase.bigDecimal;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
