@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author quanwenchao
  * @date 2018/8/25 9:01:53
  */
-public class JsonList {
+public class JsonListService {
 
     /**
      * json -> list
