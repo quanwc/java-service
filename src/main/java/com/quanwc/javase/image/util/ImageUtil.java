@@ -35,15 +35,15 @@ public class ImageUtil {
         for (int i = 0; i < split.length; ++i) {
             String str = split[i];
 
-            Integer index = str.indexOf("src=");
+            Integer index = str.indexOf("src = ");
             if (-1 == index) {
                 continue;
             }
 
             // 判断是否为http协议
-            if (!isHttpProtocol(str)) {
-                continue;
-            }
+//            if (!isHttpProtocol(str)) {
+//                continue;
+//            }
 
             // 从index位置开始，找到src的结尾引号
             Integer index2 = str.indexOf("\"", index + 5);
@@ -122,7 +122,7 @@ public class ImageUtil {
         //splitUri(content);
 
 
-        String content = "http://img4.gelonghui.com/head/head21381_14038.jpg@300h_300w";
+        String content = "别人也喊我峰哥<img class=\"emoji\" src = \"//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/4a/2018new_xiaoku_thumb.png\"></img>";
 
         List<String> strings = parsePostContentImage(content);
         for (String str : strings) {
